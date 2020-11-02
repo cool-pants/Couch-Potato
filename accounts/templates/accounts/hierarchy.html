@@ -1,0 +1,29 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-5">
+		<h5>LEADS :</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>University</th>
+				</tr>
+				{% for i in users %}
+					<tr>
+						<td>{{i.username}}</td>
+						<td>{{i.profile.college}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'userprofile' i.id %}">View</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

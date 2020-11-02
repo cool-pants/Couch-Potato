@@ -1,0 +1,25 @@
+{% extends 'accounts/main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="col-md-1"></div>
+<div class="col-md-4">
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<fieldset class="form-group">
+			<legend class="border-bottom mb-4">Update Profile</legend>
+			<p>{{ u_form.username.label }} : {{ u_form.username }}</p>
+			<p>{{ u_form.email.label }} : {{ u_form.email }}</p>
+			<p>{{ p_form.college.label }} : {{ p_form.college }}</p>
+			<p>{{ p_form.phone.label }} : {{ p_form.phone }}</p>
+			<p>{{ p_form.adhaar.label }} : {{ p_form.adhaar }}</p>
+			<p>{{ p_form.image.label }} : {{ p_form.image }}</p>
+		</fieldset>
+		<div class="form-group">
+			<button class="btn btn-outline-info" type="submit">Update</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

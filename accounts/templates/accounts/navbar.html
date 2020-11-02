@@ -1,0 +1,67 @@
+{% load static %}
+
+
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: #ffc107;
+    margin-right: 20px;
+  }
+
+  .images{
+    height: 50px; 
+  }
+
+</style>
+
+<script>
+    function Apply(){
+      $.ajax({
+        url: '/apply/',
+        type: "POST",
+        success: function (response){
+        }
+      });
+    }
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-dark"  style="background-color: #000000;">
+  <img src="{% static 'images/CouchPotato.jpg' %}" class="images" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {{ home }}">
+        <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+      </li>
+      <li class="nav-item {{ member_page }}">
+        <a class="nav-link" href="{% url 'members' %}">Members<span class="sr-only">(current)</span></a>
+      </li>
+      {% if request.user.is_staff %}
+      <li class="nav-item {{ hierarchy }}">
+        <a class="nav-link" href="{% url 'hierarchy' %}">Hierarchy<span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item {{ teamlist }}">
+        <a class="nav-link" href="{% url 'teamlist' %}">Teams<span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+
+      <li class="nav-item {{ var }}">
+        <a class="nav-link" href="{% url 'userprofile' request.user.id %}">Profile<span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Tournaments</a>
+      </li> -->
+    </ul>
+  </div>
+
+  <span class="hello-msg">Hello, {{request.user}}
+<!--     {% if not request.user.profile.is_lead or not request.user.profile.is_apply %} -->
+<!--       <span><button type="button" class="btn btn-danger" onclick="Apply();">Apply for Lead</button></span> -->
+<!--     {% endif %} -->
+  <span><a class="btn btn-warning" href="{% url 'logout' %}">Logout</a></span>
+
+</nav>

@@ -1,0 +1,22 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+<br>
+<div class ="row">
+	<div class="col-md-6">
+		<h2>ADD GAME:</h2>
+		<div class="card card-body">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<table class="table table-sm">
+					<tr>
+						<th>{{form}}</th>
+					</tr>
+
+				</table>
+				
+				<input type="submit" name="Submit">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

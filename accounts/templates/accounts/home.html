@@ -1,0 +1,98 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: rgb(88,0,212);
+			background: linear-gradient(180deg, rgba(88,0,212,1) 0%, rgba(113,5,119,1) 41%, rgba(0,0,0,1) 100%);
+
+			justify-content: center;
+		}
+
+		.typewriter h1 {
+			color: #fff;
+			font-family: monospace;
+			overflow: hidden; /* Ensures the content is not revealed until the animation */
+			border-right: .15em solid orange; /* The typwriter cursor */
+			white-space: nowrap; /* Keeps the content on a single line */
+			margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+			letter-spacing: .15em; /* Adjust as needed */
+			animation: 
+				typing 3.5s steps(40, end),
+				blink-caret .5s step-end infinite;
+		}
+		.container {
+			position: relative;
+			width: 50%;
+		}
+
+		.image {
+			opacity: 1;
+			display: block;
+			width: 233px;
+			height: 300px;
+			transition: .5s ease;
+			backface-visibility: hidden;
+		}
+
+		.middle {
+			transition: .5s ease;
+			opacity: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			text-align: center;
+		}
+
+		.container:hover .image {
+			transform: scale(1.05);
+		}
+
+
+		/* The typing effect */
+		@keyframes typing {
+			from { width: 0 }
+			to { width: 100% }
+		}
+
+		/* The typewriter cursor effect */
+		@keyframes blink-caret {
+			from, to { border-color: transparent }
+</style>
+
+<div class="typewriter" align="center">
+	<h1>Your E-Sports Destination.</h1>
+</div>
+
+<div class="col-md-4">
+	<table align="center">
+		<tr>
+			<td>
+				<div class="container">
+					<image class="image" src="{% static 'images/LoL.jpg' %}">
+				</div>
+			</td>
+			<td>
+				<div class="container">
+					<image class="image" src="{% static 'images/Clash Royale.jpg' %}">
+				</div>
+			</td>
+			<td>
+				<div class="container">
+					<image class="image" src="{% static 'images/R6S.jpg' %}">
+				</div>
+			</td>
+			<<!-- td><image width="233" height="300" src="{% static 'images/Clash Royale.jpg' %}"></td>
+			<td><image width="233" height="300" src="{% static 'images/R6S.jpg' %}"></td> -->
+		</tr>
+	</table>
+</div>
+
+{% endblock %}

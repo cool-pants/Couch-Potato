@@ -1,0 +1,57 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Team Details: </h5>
+			<hr>
+			<p>Name: {{team.name}}</p>
+			<p>Game: {{team.game}}</p>
+
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Team</a>
+		</div>
+	</div>
+
+</div>
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Member</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for i in teamMembers %}
+						<tr>
+							<td>{{i.member.name}}</td>
+							<td>{{i.member.email}}</td>
+							<td>{{i.member.phone}}</td>
+							<td><a class="btn btn-sm btn-danger" href="{% url 'deleteTeamMember' i.id%}">Remove</a></td>
+						</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+		<form action="" method="POST">
+			{% csrf_token %}
+			<table class="table table-sm">
+				<tr>
+					<th>{{form}}</th>
+				</tr>
+
+			</table>
+			
+			<input type="submit" name="Submit">
+		</form>
+	</div>
+</div>
+
+<br>
+{% endblock %}

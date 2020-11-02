@@ -1,0 +1,70 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Member Profile: </h5>
+			<hr>
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Name: {{members.name}}</p>
+			<p>Email: {{members.email}}</p>
+			<p>Phone: {{members.phone}}</p>
+			<p>Date Created: {{members.date_created}}</p>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Profile</a>
+		</div>
+	</div>
+
+</div>
+<div class = "row">
+	<div class = "col">
+		<div class = "card card-body">
+			
+			<form method="get">
+
+				{{ myFilter.form }}
+				
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
+
+		</div>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<a class="btn btn-primary btn-sm btn-block" href="{% url 'create_tier' members.id %}">Add Game</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Games</th>
+					<th>Tiers</th>
+					<th>Tournaments Played</th>
+					<th>Tournaments Won</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for i in tiers %}
+					{% if i.member.name == members.name %}
+						<tr>
+							<td>{{i.game}}</td>
+							<td>{{i.tierlist}}</td>
+							<td>{{i.played}}</td>
+							<td>{{i.won}}</td>
+							<td><a class="btn btn-sm btn-info" href="{% url 'update_tier' i.id %}">Update</a></td>
+							<td><a class="btn btn-sm btn-danger" href="{% url 'delete_tier' i.id %}">Remove</a></td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+{% endblock %}

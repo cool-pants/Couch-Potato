@@ -1,0 +1,57 @@
+{% extends 'accounts/main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div>
+			<h2>User Profile :</h2>
+		</div>
+		<div class="media">
+			<img class="rounded-circle account-img" src="{{profile.image.url}}" width="200" height="200">
+			<div class="col-md-1"></div>
+			<div class="media-body">
+				<p>  Name    : {{user.username}}</p>
+				<p>  College : {{profile.college}}</p>
+				<p>  Email   : {{user.email}}</p>
+				<p>  Phone   : {{profile.phone}}</p>
+				<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'updateuser' user.id %}">Update Profile</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Members</th>
+					<th>Date Joined</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for i in members %}
+					{% if i.college == user.first_name %}
+						<tr>
+							<td>{{i.name}}</td>
+							<td>{{i.date_created}}</td>
+							<td><a class="btn btn-sm btn-info" href="">Update</a></td>
+							<td><a class="btn btn-sm btn-danger" href="#">Remove</a></td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+{% endblock %}
