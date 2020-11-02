@@ -1,2 +1,2 @@
 # Couch-Potato
-A simple collaborative coding website written using Django, CSS and Bootstrap.
+A simple E-Sports DBMS website written using Django, JavaScript,AJAX,CSS and Bootstrap.
